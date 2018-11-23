@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using BusinessChat;
 using CoreGraphics;
+using Foundation;
 using MessageUI;
 using UIKit;
 
@@ -9,37 +10,54 @@ namespace XamarinAppleBusinessChat
 {
 	public class CustomViewController : UIViewController
 	{
-		public CustomViewController()
-		{
-			// Note: this .ctor should not contain any initialization logic.
-		}
+		public CustomViewController() { }
 
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-			// Perform any additional setup after loading the view, typically from a nib.
-
 			View.BackgroundColor = UIColor.White;
 			Title = "BC ChatButton";
 
-			var btn = UIButton.FromType(UIButtonType.System);
-			btn.Frame = new CGRect(20, 400, 280, 50);
-			btn.SetTitle("Click Me", UIControlState.Normal);
 
+			// Launch through BCChatButton
 			var msgButton = new BCChatButton(style: BCChatButtonStyle.Light); // Option of dark or light
 			msgButton.Frame = new CGRect(20, 200, 280, 44);
 			msgButton.TouchUpInside += MsgButton_TouchUpInside;
 			msgButton.TranslatesAutoresizingMaskIntoConstraints = false;
 
-			// Launch a page with a Magenta backgroun
-			var user = new UIViewController();
-			user.View.BackgroundColor = UIColor.Magenta;
-			btn.TouchUpInside += (sender, e) => {
-				this.NavigationController.PushViewController(user, true);
+			// Launch through Web
+			var btn = UIButton.FromType(UIButtonType.System);
+			btn.Frame = new CGRect(20, 400, 280, 50);
+			btn.SetTitle("Click Me", UIControlState.Normal);
+			btn.TouchUpInside += (sender, e) =>
+			{
+				UIApplication.SharedApplication.OpenUrl(new NSUrl("https://bcrw.apple.com/urn:biz:8cf6bcd5-889a-40b9-aff1-77373927bc7f"));
 			};
 
-			View.AddSubview(btn);
+			#region Older Code
+			// Launch a page with a Magenta backgroun
+			//var user = new UIViewController();
+			//user.View.BackgroundColor = UIColor.Magenta;
+			//btn.TouchUpInside += (sender, e) =>
+			//{
+			//	this.NavigationController.PushViewController(user, true);
+			//};
+
+			// Cannot be launched through text message
+			//btn.TouchUpInside += (sender, e) => {
+			//	if (MFMessageComposeViewController.CanSendText)
+			//	{
+			//		var recipients = new String[] { "+39800290915" };
+			//		var messageController = new MFMessageComposeViewController();
+			//		messageController.Recipients = recipients;
+			//		messageController.Body = "Your_message_text";
+			//		PresentViewController(messageController, true, null);
+			//	}
+			//};
+			#endregion Older Code
+
 			View.AddSubview(msgButton);
+			View.AddSubview(btn);
 		}
 
 		void MsgButton_TouchUpInside(object sender, EventArgs e)
@@ -48,7 +66,6 @@ namespace XamarinAppleBusinessChat
 			parameters.Add(BCParameterName.Body, "I need to reset my equipment.");
 			parameters.Add(BCParameterName.Group, "services_department");
 			parameters.Add(BCParameterName.Intent, "reset_all_equipment");
-			//var businessID = "9c231233-d943-482a-b913-7c625ba19988";
 			var businessID = "8cf6bcd5-889a-40b9-aff1-77373927bc7f";
 			BCChatAction.OpenTranscript(businessID, parameters);
 		}
