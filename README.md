@@ -15,3 +15,8 @@ https://www.youtube.com/watch?v=XOmHMg9jjGY
 
 The presentation 
 https://docs.google.com/presentation/d/1quobG_Vzn_72w5FyXo-6M_iNMnSqdAabVNtWN8L7Drc
+
+### Pictures
+
+![Picture1](XamarinAppleBusinessChat/Images/IMG_4126.PNG)
+![Picture2](XamarinAppleBusinessChat/Images/IMG_4126.PNG)
