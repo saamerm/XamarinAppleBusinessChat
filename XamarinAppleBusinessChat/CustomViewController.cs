@@ -31,6 +31,8 @@ namespace XamarinAppleBusinessChat
 			btn.SetTitle("Click Me", UIControlState.Normal);
 			btn.TouchUpInside += (sender, e) =>
 			{
+				// URL format for including body, group & intent details:
+				// https://bcrw.apple.com/urn:biz:9c231233-d943-482a-b913-7c625ba19988?biz-intent-id=account_question&biz-group-id=credit_card_department&body=Order%20additional%20credit%20card
 				UIApplication.SharedApplication.OpenUrl(new NSUrl("https://bcrw.apple.com/urn:biz:8cf6bcd5-889a-40b9-aff1-77373927bc7f"));
 			};
 
