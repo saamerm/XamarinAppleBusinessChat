@@ -14,7 +14,7 @@ https://www.youtube.com/watch?v=XOmHMg9jjGY
 ## Presentation
 
 The presentation 
-https://docs.google.com/presentation/d/1quobG_Vzn_72w5FyXo-6M_iNMnSqdAabVNtWN8L7Drc
+https://docs.google.com/presentation/d/1Z1pzWuOzpYFLxJdZVEjST3r1k1PA2YQKFYoS9K-AcKU
 
 ### Pictures
 
